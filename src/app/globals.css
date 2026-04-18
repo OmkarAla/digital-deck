@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-dubai-gold: #D4AF37; /* More refined Champagne Gold */
+  --color-electric-blue: #3B82F6;
+  --color-charcoal: #121212;
+  
+  --font-sans: "Outfit", var(--font-geist-sans);
+  
+  --animate-fade-in: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes scale-in {
+    from { transform: scale(0.98); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 }
 
+:root {
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --luxury-padding: 160px; /* Increased from 120px */
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  padding: 0;
+  margin: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-[#0A0A0A]/40 backdrop-blur-2xl border border-white/5 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)];
+  }
+  
+  .cinematic-text {
+    @apply tracking-[-0.04em] leading-[0.85] font-black uppercase;
+  }
+
+  .scene-container {
+    @apply relative min-h-screen w-full flex flex-col justify-center px-[var(--luxury-padding)] pt-40 pb-20;
+  }
+
+  /* Version for long-form strategic modules like Leasing */
+  .scene-container-scrollable {
+    @apply relative min-h-screen w-full flex flex-col justify-center px-[var(--luxury-padding)] py-[20vh];
+  }
+
+  .luxury-button {
+    @apply px-14 py-6 bg-transparent border border-white/10 text-white/90 uppercase text-[9px] tracking-[0.5em] font-bold hover:bg-white hover:text-black hover:border-white transition-all duration-700 flex items-center gap-6;
+  }
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Standard body flow: Lenis will manage the inertial weight and JS-snapping */
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom Scrollbar (Rarely needed in presentation mode but kept for sub-scrolls) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A059;
 }

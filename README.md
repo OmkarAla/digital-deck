@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Dubai Mall: Global Sales Platform V4.0
 
-## Getting Started
+This repository contains the interactive sales deck for **The Dubai Mall**, envisioned as a high-fidelity, standalone pitch platform for prospective retail tenants, sponsors, and event partners. 
 
-First, run the development server:
+Built as part of an interview assessment, this project replaces fragmented, manual pitch processes (static PDFs, independent videos, spreadsheets) with a unified, cinematic, and interactive "Digideck" experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Live Demo
+*(Insert your Vercel/Netlify Live URL here prior to submission)*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 16 (App Router)
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS V4 (Utility-first, heavily customized for luxury bespoke styling)
+- **Animation**: Framer Motion (Orchestrating layout transitions, scroll reveals, and micro-interactions)
+- **Typography**: Google Fonts (Geist/Outfit) optimized via `next/font`
+- **Media**: Native HTML5 Video & YouTube iFrame API (Optimized for Theater Mode storytelling)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Setup & Installation
 
-## Learn More
+To run this platform locally:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**:
+   ```bash
+   git clone <your-repo-url>
+   cd <repo-name>
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. **View the platform**: open `http://localhost:3000` in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📐 Design Decisions & Architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Unlike a traditional static website, this tool is structured specifically as a **Pitch Presentation**.
+- **Theater Mode First**: Video is treated as the primary storytelling anchor, not a background decoration. The intro sequence provides immediate emotional buy-in through a 16:9 cinematic frame with "Director's Metadata" to emulate an internal executive briefing.
+- **Strict Viewport Containment**: Core strategic modules utilize strict `100vh` boundaries (`scene-container`), forcing the user to focus on one narrative beat at a time—just like a slide in a deck, but infinitely more interactive.
+- **Narrative Over Navigation**: Instead of traditional web routing, the interface uses fluid scroll-snapping and an integrated Navbar to allow users to non-linearly jump between strategic pillars (Scale, Retail, Luxury, Events, Sponsorship).
+
+## 🛠️ Tools & Stack Additions
+- **AI Utility**: LLM tools were utilized sparingly for initial boilerplate scaffolding and placeholder copy generation.
+
+## 📂 Repository Structure
+
+- `/src/app`: Core Next.js routing, global CSS, and main layout container.
+- `/src/components`: Contains the high-level reusable UI components (Navigation, CinematicIntro).
+- `/src/components/sections`: The primary narrative "Slides" (Stats, Ecosystem, Luxury).
+- `/src/components/modules`: Expandable interactive deep-dives (Leasing, Sponsorship, Brand Simulator).
+
+---
+*Developed as a technical and product strategy assessment.*
