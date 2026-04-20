@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   description: "Experience the world's most visited retail and lifestyle destination. A platform for luxury, innovation, and global scale.",
 };
 
-import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
 export default function RootLayout({
   children,
@@ -22,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} dark antialiased`}>
       <body className="bg-background text-foreground font-sans selection:bg-dubai-gold selection:text-black">
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+        {children}
       </body>
     </html>
   );
