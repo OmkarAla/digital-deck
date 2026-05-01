@@ -10,7 +10,7 @@ const stats = [
   { label: "Growth Rate", value: "19%", icon: TrendingUp, sub: "Year-on-Year Increase" },
 ];
 
-export default function StatsSection() {
+export default function StatsSection({ setSlide }: { setSlide: (i: number) => void }) {
   return (
     <div className="scene-container">
       <div className="flex flex-col md:flex-row justify-between items-start mb-24 gap-12">
@@ -19,7 +19,7 @@ export default function StatsSection() {
              <div className="h-[1px] w-12 bg-dubai-gold" />
              <span className="text-dubai-gold uppercase tracking-[0.5em] text-xs font-bold">Market Leadership</span>
           </div>
-          <h3 className="text-6xl md:text-8xl font-black cinemactic-text uppercase">
+          <h3 className="text-6xl md:text-8xl font-black cinematic-text uppercase">
             THE FORCE <br /> OF <span className="text-white/20 italic">NUMBERS.</span>
           </h3>
         </div>
@@ -29,23 +29,26 @@ export default function StatsSection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 w-full">
-        {stats.map((stat, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel p-16 group hover:border-dubai-gold/40 transition-all duration-700 flex flex-col justify-between min-h-[400px]"
-          >
-            <div>
-              <stat.icon className="text-dubai-gold/40 mb-12 group-hover:text-dubai-gold transition-colors" size={32} />
-              <div className="text-7xl font-black mb-6 tracking-tighter tabular-nums leading-none">{stat.value}</div>
-              <div className="text-xs font-bold uppercase tracking-[0.4em] mb-4 text-white/40 group-hover:text-white transition-colors">{stat.label}</div>
-            </div>
-            <p className="text-white/20 text-xs leading-relaxed font-light uppercase tracking-widest">{stat.sub}</p>
-          </motion.div>
-        ))}
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-panel p-16 group hover:border-dubai-gold/40 transition-all duration-700 flex flex-col justify-between min-h-[400px]"
+            >
+              <div>
+                <Icon className="text-dubai-gold/40 mb-12 group-hover:text-dubai-gold transition-colors" size={32} />
+                <div className="text-7xl font-black mb-6 tracking-tighter tabular-nums leading-none">{stat.value}</div>
+                <div className="text-xs font-bold uppercase tracking-[0.4em] mb-4 text-white/40 group-hover:text-white transition-colors">{stat.label}</div>
+              </div>
+              <p className="text-white/20 text-xs leading-relaxed font-light uppercase tracking-widest">{stat.sub}</p>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Decorative Interactive Hint */}

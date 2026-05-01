@@ -3,11 +3,11 @@
 @theme inline {
   --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;
-  --color-dubai-gold: #D4AF37; /* More refined Champagne Gold */
+  --color-dubai-gold: #D4AF37;
   --color-electric-blue: #3B82F6;
   --color-charcoal: #121212;
   
-  --font-sans: "Outfit", var(--font-geist-sans);
+  --font-sans: "Outfit", var(--font-outfit);
   
   --animate-fade-in: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-slide-up: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -30,7 +30,7 @@
 :root {
   --background: #0A0A0A;
   --foreground: #FFFFFF;
-  --luxury-padding: 160px; /* Increased from 120px */
+  --luxury-padding: 160px;
 }
 
 * {
@@ -50,26 +50,118 @@ body {
   line-height: 1.6;
 }
 
-@layer components {
-  .glass-panel {
-    @apply bg-[#0A0A0A]/40 backdrop-blur-2xl border border-white/5 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)];
-  }
-  
-  .cinematic-text {
-    @apply tracking-[-0.04em] leading-[0.85] font-black uppercase;
-  }
-
-  .scene-container {
-    @apply absolute inset-0 w-full h-full flex flex-col justify-center px-[var(--luxury-padding)];
-  }
-
-  .scene-container-scrollable {
-    @apply absolute inset-0 w-full h-full flex flex-col justify-center px-[var(--luxury-padding)];
-  }
-
-  .luxury-button {
-    @apply px-14 py-6 bg-transparent border border-white/10 text-white/90 uppercase text-[9px] tracking-[0.5em] font-bold hover:bg-white hover:text-black hover:border-white transition-all duration-700 flex items-center gap-6;
-  }
+@utility glass-panel {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
 }
 
+@utility cinematic-text {
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 
+@utility scene-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: var(--luxury-padding);
+  padding-right: var(--luxury-padding);
+  background-color: black;
+}
+
+@utility scene-container-scrollable {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--luxury-padding);
+  padding-right: var(--luxury-padding);
+  padding-top: 100px;
+  padding-bottom: 120px;
+  background-color: black;
+  overflow-y: auto;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.scene-container-scrollable::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+@utility luxury-button {
+  padding: 1.5rem 3.5rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.5em;
+  font-weight: 700;
+  transition: all 0.7s;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.luxury-button:hover {
+  background-color: #D4AF37;
+  color: black;
+  border-color: #D4AF37;
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+}
+
+/* Custom Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.2);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* AI Glitch Effect Utility */
+.ai-glitch {
+  position: relative;
+}
+.ai-glitch::before, .ai-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+.ai-glitch::before {
+  color: #0ff;
+  z-index: -1;
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.ai-glitch::after {
+  color: #f0f;
+  z-index: -2;
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}

@@ -12,7 +12,7 @@ const paths = [
   { id: "popup", title: "Experimental", icon: Zap, pitch: "Launch, test, and scale with flexible, high-impact short-term activations in our most populated nodes.", stats: { traffic: "Maximum Reach", growth: "N/A", focus: "Product Launch" } },
 ];
 
-export default function LeasingModule() {
+export default function LeasingModule({ setSlide }: { setSlide: (i: number) => void }) {
   const [activePath, setActivePath] = useState("luxury");
   const path = paths.find(p => p.id === activePath);
 
@@ -31,26 +31,29 @@ export default function LeasingModule() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-start w-full">
         {/* Navigation Sidebar (Local to this module) */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          {paths.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setActivePath(p.id)}
-              className={cn(
-                "p-10 border text-left transition-all duration-700 group relative overflow-hidden",
-                activePath === p.id ? "border-dubai-gold bg-dubai-gold/5" : "border-white/5 hover:border-white/20"
-              )}
-            >
-              <div className="flex items-center gap-8">
-                <p.icon className={cn("transition-colors duration-500", activePath === p.id ? "text-dubai-gold" : "text-white/20")} size={28} />
-                <div className={cn("text-xl font-black uppercase tracking-tight transition-colors duration-500", activePath === p.id ? "text-white" : "text-white/40 group-hover:text-white")}>
-                  {p.title}
+          {paths.map((p) => {
+            const Icon = p.icon;
+            return (
+              <button
+                key={p.id}
+                onClick={() => setActivePath(p.id)}
+                className={cn(
+                  "p-10 border text-left transition-all duration-700 group relative overflow-hidden",
+                  activePath === p.id ? "border-dubai-gold bg-dubai-gold/5" : "border-white/5 hover:border-white/20"
+                )}
+              >
+                <div className="flex items-center gap-8">
+                  <Icon className={cn("transition-colors duration-500", activePath === p.id ? "text-dubai-gold" : "text-white/20")} size={28} />
+                  <div className={cn("text-xl font-black uppercase tracking-tight transition-colors duration-500", activePath === p.id ? "text-white" : "text-white/40 group-hover:text-white")}>
+                    {p.title}
+                  </div>
                 </div>
-              </div>
-              {activePath === p.id && (
-                <motion.div layoutId="path-indicator" className="absolute right-0 top-0 bottom-0 w-1 bg-dubai-gold shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
-              )}
-            </button>
-          ))}
+                {activePath === p.id && (
+                  <motion.div layoutId="path-indicator" className="absolute right-0 top-0 bottom-0 w-1 bg-dubai-gold shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Detailed Path Pitch */}

@@ -10,7 +10,7 @@ const venues = [
   { name: "Exposition Hall", capacity: "10,000+", type: "Conventions", icon: Trophy },
 ];
 
-export default function EventsModule() {
+export default function EventsModule({ setSlide }: { setSlide: (i: number) => void }) {
   return (
     <div className="scene-container">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-start w-full">
@@ -20,7 +20,7 @@ export default function EventsModule() {
              <span className="text-dubai-gold uppercase tracking-[0.6em] text-xs font-bold">The Global Stage</span>
           </div>
           
-          <h3 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter cinemactic-text uppercase">
+          <h3 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter cinematic-text uppercase">
             A PLATFORM <br /> FOR <span className="text-white/20 italic font-medium">LEGENDS.</span>
           </h3>
           
@@ -29,21 +29,24 @@ export default function EventsModule() {
           </p>
 
           <div className="space-y-6 pt-10 border-t border-white/5">
-            {venues.map((venue, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center gap-8 p-8 glass-panel border border-white/5 hover:border-dubai-gold/20 transition-all group"
-              >
-                <venue.icon className="text-dubai-gold/40 group-hover:text-dubai-gold transition-colors" size={28} />
-                <div className="flex-1">
-                  <div className="text-xs uppercase tracking-[0.4em] font-bold text-white mb-2">{venue.name}</div>
-                  <div className="text-[11px] uppercase tracking-[0.3em] text-white/20 font-medium">{venue.type} • CAPACITY: {venue.capacity}</div>
-                </div>
-              </motion.div>
-            ))}
+            {venues.map((venue, i) => {
+              const Icon = venue.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-center gap-8 p-8 glass-panel border border-white/5 hover:border-dubai-gold/20 transition-all group"
+                >
+                  <Icon className="text-dubai-gold/40 group-hover:text-dubai-gold transition-colors" size={28} />
+                  <div className="flex-1">
+                    <div className="text-xs uppercase tracking-[0.4em] font-bold text-white mb-2">{venue.name}</div>
+                    <div className="text-[11px] uppercase tracking-[0.3em] text-white/20 font-medium">{venue.type} • CAPACITY: {venue.capacity}</div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           <button className="luxury-button w-fit mt-8">Request Venue Specification Deck</button>

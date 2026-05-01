@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Monitor, CreditCard, Layout, MapPin, Eye, MousePointer2 } from "lucide-react";
+import { Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const opportunities = [
@@ -12,7 +12,7 @@ const opportunities = [
   { id: 4, title: "Valet Entry Dominance", reach: "HNI / Affluent", type: "Physical Iconic", cost: "$$$", x: "10%", y: "20%" },
 ];
 
-export default function SponsorshipModule() {
+export default function SponsorshipModule({ setSlide }: { setSlide: (i: number) => void }) {
   const [activeId, setActiveId] = useState(1);
   const activeOpp = opportunities.find(o => o.id === activeId);
 
@@ -24,7 +24,7 @@ export default function SponsorshipModule() {
              <div className="h-[1px] w-12 bg-dubai-gold" />
              <span className="text-dubai-gold uppercase tracking-[0.6em] text-xs font-bold">Brand Dominance</span>
           </div>
-          <h3 className="text-6xl md:text-8xl font-black cinemactic-text uppercase tracking-tighter leading-none">
+          <h3 className="text-6xl md:text-8xl font-black cinematic-text uppercase tracking-tighter leading-none">
             OMNIPRESENT <br /> <span className="text-white/20 italic font-medium">ACTIVATION.</span>
           </h3>
         </div>
