@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
-export default function AttractionsSection() {
+export default function AttractionsSection({ setSlide }: { setSlide: (i: number) => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,7 +37,7 @@ export default function AttractionsSection() {
                  <span className="text-dubai-gold uppercase tracking-[0.6em] text-xs font-bold">Experiential Anchors</span>
               </div>
               
-              <h3 className="text-6xl md:text-8xl font-black cinemactic-text tracking-tighter leading-[0.85] uppercase">
+              <h3 className="text-6xl md:text-8xl font-black cinematic-text tracking-tighter leading-[0.85] uppercase">
                 THE EPICENTER <br /> OF <span className="text-white/20 italic font-medium">WONDER.</span>
               </h3>
               

@@ -9,9 +9,9 @@ const categories = [
   { title: "Entertainment", count: "10+ anchors", image: "/assets/aquarium.png" },
 ];
 
-export default function EcosystemSection() {
+export default function EcosystemSection({ setSlide }: { setSlide: (i: number) => void }) {
   return (
-    <div className="scene-container flex-row gap-20 items-center">
+    <div className="scene-container flex flex-row gap-20 items-center">
       {/* LEFT COLUMN: Narrative & Stats */}
       <div className="flex flex-col justify-center w-[38%] flex-shrink-0">
         <div className="flex items-center gap-4 mb-6">

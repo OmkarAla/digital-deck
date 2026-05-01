@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useState, useRef } from "react";
 
-export default function CinematicIntro() {
+export default function CinematicIntro({ setSlide }: { setSlide: (i: number) => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleBegin = () => {
@@ -12,8 +12,7 @@ export default function CinematicIntro() {
       audioRef.current.play();
       audioRef.current.volume = 0.5;
     }
-    // Scroll to the next section
-    document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' });
+    setSlide(1);
   };
 
   return (

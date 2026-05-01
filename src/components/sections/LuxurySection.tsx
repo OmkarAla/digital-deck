@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function LuxurySection() {
+export default function LuxurySection({ setSlide }: { setSlide: (i: number) => void }) {
   return (
     <div className="scene-container">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-48 items-center">
@@ -26,13 +26,13 @@ export default function LuxurySection() {
                <div className="h-[1px] w-12 bg-dubai-gold" />
                <span className="text-dubai-gold text-xs uppercase tracking-[0.5em] font-bold">The Pinnacle</span>
             </div>
-            <h4 className="text-5xl font-black cinemactic-text tracking-tighter uppercase leading-none text-white">FASHION <br /> <span className="text-white/20 italic">AVENUE</span></h4>
+            <h4 className="text-5xl font-black cinematic-text tracking-tighter uppercase leading-none text-white">FASHION <br /> <span className="text-white/20 italic">AVENUE</span></h4>
           </div>
         </motion.div>
-
+ 
         <div className="flex flex-col gap-12">
           <div className="max-w-2xl">
-            <h3 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter cinemactic-text uppercase mb-10">
+            <h3 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter cinematic-text uppercase mb-10">
               WHERE LEGENDS <br /> <span className="text-white/20 italic font-medium">RESIDE.</span>
             </h3>
             

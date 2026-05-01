@@ -12,22 +12,31 @@ import SponsorshipModule from "@/components/modules/SponsorshipModule";
 import BrandFitSimulator from "@/components/BrandFitSimulator";
 import LeasingModule from "@/components/modules/LeasingModule";
 import CinematicIntro from "@/components/CinematicIntro";
+import GlobalHub from "@/components/GlobalHub";
+import ImmersiveView from "@/components/sections/ImmersiveView";
 
 const slides = [
   { id: "Introduction", component: CinematicIntro },
+  { id: "Strategic Hub", component: GlobalHub },
   { id: "Global Scale", component: StatsSection },
-  { id: "Ecosystem", component: EcosystemSection },
   { id: "Luxury Heritage", component: LuxurySection },
   { id: "Attractions", component: AttractionsSection },
+  { id: "Immersive View", component: ImmersiveView },
   { id: "Event Platform", component: EventsModule },
   { id: "Sponsorship", component: SponsorshipModule },
   { id: "Brand Simulator", component: BrandFitSimulator },
+  { id: "Ecosystem", component: EcosystemSection },
   { id: "Leasing Paths", component: LeasingModule },
 ];
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const setSlide = useCallback((index: number) => {
+    if (isAnimating) return;
+    setCurrentSlide(index);
+  }, [isAnimating]);
 
   const nextSlide = useCallback(() => {
     if (isAnimating) return;
@@ -102,7 +111,7 @@ export default function Home() {
             onAnimationStart={() => setIsAnimating(true)}
             onAnimationComplete={() => setIsAnimating(false)}
           >
-            <ActiveComponent />
+            <ActiveComponent setSlide={setSlide} />
           </motion.div>
         </AnimatePresence>
       </div>
