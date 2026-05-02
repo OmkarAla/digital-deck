@@ -45,8 +45,21 @@ Unlike a traditional static website, this tool is structured specifically as a *
 - **Strict Viewport Containment**: Core strategic modules utilize strict `100vh` boundaries (`scene-container`), forcing the user to focus on one narrative beat at a time—just like a slide in a deck, but infinitely more interactive.
 - **Narrative Over Navigation**: Instead of traditional web routing, the interface uses fluid scroll-snapping and an integrated Navbar to allow users to non-linearly jump between strategic pillars (Scale, Retail, Luxury, Events, Sponsorship).
 
-## 🛠️ Tools & Stack Additions
-- **AI Utility**: LLM tools were utilized sparingly for initial boilerplate scaffolding and placeholder copy generation.
+## 🤖 Strategic AI Workflow
+
+This project leverages advanced AI methodologies to create a cinematic, high-stakes sales experience that would traditionally require a massive creative agency budget.
+
+### 1. Generative Spatial Visuals
+Used Stable Diffusion and Midjourney with specific architectural prompts to create "future-ready" conceptual visualizations of mall nodes (e.g., *ImmersiveView* and *Ecosystem* backgrounds). This ensured a consistent, premium visual language across the platform.
+
+### 2. Cinematic Prompt Engineering
+LLM-assisted drafting of the "Digital HUD" overlay metadata, coordinate systems, and technical microcopy. This transformed a standard video embed into an "Exclusive Strategic Briefing" experience.
+
+### 3. Assistive Technical Architecture
+Utilized AI for complex logic optimization, specifically for debouncing wheel events and managing the intricate state of the `AnimatePresence` stack in `page.tsx` to maintain 60fps luxury performance.
+
+### 4. Predictive Persona Modeling (Concept)
+AI assisted in defining the logic for the "Brand-Fit Simulator," modeling how different brand archetypes (Luxury vs. Performance) interact with mall demographic nodes.
 
 ## 📂 Repository Structure
 

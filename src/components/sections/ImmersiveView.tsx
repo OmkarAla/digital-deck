@@ -7,9 +7,9 @@ import { Eye, Zap, Users, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const hotspots = [
-  { id: 1, top: "40%", left: "30%", title: "VIP Tunnel Experience", content: "Exclusive sponsorship node with 98% brand recall.", icon: Eye },
-  { id: 2, top: "60%", left: "70%", title: "Digital Surface Node", content: "AI-driven content projection with real-time gaze tracking.", icon: Zap },
-  { id: 3, top: "30%", left: "80%", title: "Hedge Fund Audience", index: "9.4/10", content: "Highest concentration of ultra-high-net-worth individuals.", icon: Users },
+  { id: 1, top: "40%", left: "30%", title: "VIP Tunnel Experience", content: "Strategic sponsorship node with 98% brand recall and primary engagement index.", icon: Eye },
+  { id: 2, top: "60%", left: "70%", title: "Digital Surface Node", content: "AI-driven content projection with 4.5x higher conversion than standard retail media.", icon: Zap },
+  { id: 3, top: "30%", left: "80%", title: "Hedge Fund Audience", index: "9.8/10", content: "World's highest concentration of UHNWI during peak financial cycles.", icon: Users },
 ];
 
 export default function ImmersiveView({ setSlide }: { setSlide: (i: number) => void }) {

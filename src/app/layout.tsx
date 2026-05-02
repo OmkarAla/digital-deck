@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} dark antialiased`}>
-      <body className="bg-background text-foreground font-sans selection:bg-dubai-gold selection:text-black">
+      <body suppressHydrationWarning className="bg-background text-foreground font-sans selection:bg-dubai-gold selection:text-black">
         {children}
       </body>
     </html>

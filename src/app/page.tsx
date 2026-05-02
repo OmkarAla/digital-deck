@@ -14,6 +14,7 @@ import LeasingModule from "@/components/modules/LeasingModule";
 import CinematicIntro from "@/components/CinematicIntro";
 import GlobalHub from "@/components/GlobalHub";
 import ImmersiveView from "@/components/sections/ImmersiveView";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const slides = [
   { id: "Introduction", component: CinematicIntro },
@@ -32,6 +33,12 @@ const slides = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const setSlide = useCallback((index: number) => {
     if (isAnimating) return;
@@ -97,9 +104,30 @@ export default function Home() {
 
   // Slide transition direction based on index change would be ideal, but for simplicity a clean fade-push works universally.
   return (
-    <main className="bg-background w-screen h-screen overflow-hidden flex flex-col relative">
+    <main className="bg-background w-screen h-screen overflow-hidden flex flex-col relative font-sans selection:bg-dubai-gold selection:text-black">
       
-      <div className="flex-1 relative w-full h-[calc(100vh-80px)] overflow-hidden">
+      <AnimatePresence>
+        {isLoading && <LoadingScreen key="loader" />}
+      </AnimatePresence>
+
+      {/* Floating Section Index (UX Anchor) - Moved to TOP RIGHT to avoid hamburger overlap */}
+      <div className="fixed top-8 right-8 lg:top-12 lg:right-12 z-[100] flex items-center gap-4 lg:gap-6 mix-blend-difference pointer-events-none">
+        <div className="flex flex-col items-end">
+           <span className="text-dubai-gold font-black text-[8px] lg:text-[10px] tracking-[0.5em] uppercase mb-1">SECTION</span>
+           <div className="flex items-end gap-2">
+              <span className="text-white font-black text-xl lg:text-2xl tracking-tighter leading-none">0{currentSlide + 1}</span>
+              <span className="text-white/20 font-medium text-[8px] lg:text-[10px] tracking-widest mb-[2px]">/ 0{slides.length}</span>
+           </div>
+        </div>
+        <div className="h-8 lg:h-10 w-[1px] bg-white/10" />
+        <div className="hidden sm:flex flex-col">
+           <span className="text-white/30 font-bold text-[8px] lg:text-[9px] tracking-[0.4em] uppercase mb-1">LOCATION</span>
+           <span className="text-white font-black text-[9px] lg:text-[11px] tracking-[0.3em] uppercase">{slides[currentSlide].id}</span>
+        </div>
+      </div>
+
+
+      <div className="flex-1 relative w-full h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
