@@ -43,7 +43,7 @@ export default function LeasingModule({ setSlide }: { setSlide: (i: number) => v
                 )}
               >
                 <div className="flex items-center gap-6 lg:gap-8">
-                  <Icon className={cn("transition-colors duration-500", activePath === p.id ? "text-dubai-gold" : "text-white/20")} size={24} className="lg:w-7 lg:h-7" />
+                  <Icon size={24} className={cn("transition-colors duration-500 lg:w-7 lg:h-7", activePath === p.id ? "text-dubai-gold" : "text-white/20")} />
                   <div className={cn("text-lg lg:text-xl font-black uppercase tracking-tight transition-colors duration-500", activePath === p.id ? "text-white" : "text-white/40 group-hover:text-white")}>
                     {p.title}
                   </div>

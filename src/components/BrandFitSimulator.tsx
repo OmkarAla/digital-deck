@@ -148,7 +148,7 @@ export default function BrandFitSimulator({ setSlide }: { setSlide: (i: number) 
                                 selections.investment === inv.id ? "border-dubai-gold bg-dubai-gold/5" : "border-white/5 hover:border-white/20"
                               )}
                             >
-                              <Icon className={cn("transition-colors duration-500", selections.investment === inv.id ? "text-dubai-gold" : "text-white/20")} size={24} className="lg:w-8 lg:h-8" />
+                              <Icon size={24} className={cn("transition-colors duration-500 lg:w-8 lg:h-8", selections.investment === inv.id ? "text-dubai-gold" : "text-white/20")} />
                               <div>
                                 <div className={cn("text-sm lg:text-xl font-black uppercase tracking-tighter transition-all duration-500", selections.investment === inv.id ? "text-white" : "text-white/40 group-hover:text-white")}>
                                   {inv.label}

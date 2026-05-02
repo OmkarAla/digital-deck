@@ -41,7 +41,7 @@ export default function StatsSection({ setSlide }: { setSlide: (i: number) => vo
               className="glass-panel p-8 lg:p-16 group hover:border-dubai-gold/40 transition-all duration-700 flex flex-col justify-between min-h-[300px] lg:min-h-[400px]"
             >
               <div>
-                <Icon className="text-dubai-gold/40 mb-8 lg:mb-12 group-hover:text-dubai-gold transition-colors" size={24} className="lg:w-8 lg:h-8" />
+                <Icon size={24} className="text-dubai-gold/40 mb-8 lg:mb-12 group-hover:text-dubai-gold transition-colors lg:w-8 lg:h-8" />
                 <div className="text-5xl lg:text-7xl font-black mb-4 lg:mb-6 tracking-tighter tabular-nums leading-none">{stat.value}</div>
                 <div className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.3em] lg:tracking-[0.4em] mb-2 lg:mb-4 text-white/40 group-hover:text-white transition-colors">{stat.label}</div>
               </div>
